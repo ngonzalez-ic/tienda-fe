@@ -10,25 +10,15 @@ function App() {
             <Switch>
               <Route path='/Nosotros'>
               </Route>
-            </Switch>
-            <Switch>
               <Route path='/registrese'>
               </Route>
-            </Switch>
-            <Switch>
               <Route path='/login'>
                 <Login/>
               </Route>
-            </Switch>
-            <Switch>
               <Route path='/productos'>
               </Route>
-            </Switch>
-            <Switch>
               <Route path='/contactos'>
               </Route>
-            </Switch>
-            <Switch>
               <Route path='/'>
                 <Content />
               </Route>
