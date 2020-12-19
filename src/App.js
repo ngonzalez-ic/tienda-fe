@@ -2,6 +2,7 @@ import React from 'react'
 import {Switch,BrowserRouter as Router, Route}from 'react-router-dom'
 import Content from './components/content';
 import Login from './components/login';
+import Register from './components/register';
 
 function App() {
   return (
@@ -10,11 +11,8 @@ function App() {
             <Switch>
               <Route path='/Nosotros'>
               </Route>
-              <Route path='/registrese'>
-              </Route>
-              <Route path='/login'>
-                <Login/>
-              </Route>
+              <Route path='/register' exact component={Register} />
+              <Route path='/login' exact component={Login} />
               <Route path='/productos'>
               </Route>
               <Route path='/contactos'>
