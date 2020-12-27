@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Navbar } from 'react-bulma-components'
+import { Button } from 'react-bulma-components'
 
 const Navigator=()=>
 {

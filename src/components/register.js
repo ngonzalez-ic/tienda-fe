@@ -17,7 +17,6 @@ const Register=()=>{
         const handleSubmit=(e)=>{
             e.preventDefault()
         createUserWeb(register)
-        console.log(register);
         }
     return(
         <form  onSubmit={handleSubmit} style={{ margin: '10% auto ', width: 450 }}>

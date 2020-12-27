@@ -24,3 +24,15 @@ export async function getProducts () {
     console.log(e)
   }
 }
+export async function loginUserWeb (data) {
+  try {
+    const response = await Axios({
+      method: 'POST',
+      url:'http://localhost:3001/usuariosweb/login',
+      data:data
+    })
+    return response
+  } catch (e) {
+    console.log(e)    
+  }
+}
