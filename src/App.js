@@ -3,10 +3,12 @@ import {Switch,BrowserRouter as Router, Route}from 'react-router-dom'
 import Content from './components/content';
 import Login from './components/login';
 import Register from './components/register';
+import GlobalState from './context/globalState';
 
 function App() {
   return (
         <div> 
+          <GlobalState>
           <Router>
             <Switch>
               <Route path='/Nosotros'>
@@ -22,6 +24,7 @@ function App() {
               </Route>
             </Switch>
           </Router>
+          </GlobalState>
         </div>
   );
 }

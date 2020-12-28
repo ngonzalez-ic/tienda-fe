@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState,useContext} from 'react'
 import { useHistory } from "react-router-dom";
 import { Form as BulmaForms, Button } from 'react-bulma-components'
 import {loginUserWeb} from '../utils/index'
 import Loading from '../components/loading/Loading'
-const { Field, Control, Label, Input } = BulmaForms
+import ContextApi from '../context/contextApi';
+const { Field, Control, Label, Input} = BulmaForms
 
 
     const Login = () => {
+        const context = useContext(ContextApi)
         const [formValue, setFormValue] = useState({ email: '', password:''})
         const [isLoading, setLoading]= useState(false)
         const history = useHistory();
@@ -16,8 +18,10 @@ const { Field, Control, Label, Input } = BulmaForms
           }
           const handleSubmit = (e) => {
             e.preventDefault()
-            loginUserWeb(formValue).then(data=>{
+            loginUserWeb(formValue)
+            .then(data=>{
                 if(data.data.token){
+                    context.loginUser(data.data.token)
                     console.log("Bienvenido/a")
                     history.push("/")
                 }else{
@@ -35,6 +39,7 @@ const { Field, Control, Label, Input } = BulmaForms
         return (
                     <>
                     {isLoading?<Loading />:<form onSubmit={handleSubmit} style={{ margin: '10% auto ', width: 450 }}>
+                            
                             <Field>
                                 <Label>Correo</Label>
                                 <Control>
@@ -58,7 +63,6 @@ const { Field, Control, Label, Input } = BulmaForms
                                 Guardar
                             </Button>
                         </form> }
-
                     </>
             
         )
