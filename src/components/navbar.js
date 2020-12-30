@@ -9,10 +9,10 @@ const Navigator=()=>
 		<ContextApi.Consumer>
 			{ context=>(
 				<div style={{backgroundColor:'#00D1B2'}}>
+				<Button color='primary' style={{ margin: '5px'}}><Link to="/" style={{color:'white' }}>Inicio</Link></Button>
 				<Button color='primary' style={{ margin: '5px'}}><Link to="/login" style={{color:'white' }}>Login</Link></Button>
-				<Button color='primary' style={{ margin: '5px'}}><Link to="/productos" style={{color:'white' }}>Productos</Link></Button>
-			 <Button color='primary' style={{ margin: '5px'}} ><Link to="/register" style={{color:'white' }}>Registrese</Link></Button>
-			 <Button color='primary' style={{ margin: '5px'}} ><Link to="/register" style={{color:'white' }}>Salir</Link></Button>
+				<Button color='primary' style={{ margin: '5px'}} ><Link to="/register" style={{color:'white' }}>Registrese</Link></Button>
+				<Button color='primary' style={{ margin: '5px'}} ><Link to="/register" style={{color:'white' }}>Salir</Link></Button>
 			 </div>
 			)}
 		</ContextApi.Consumer>
