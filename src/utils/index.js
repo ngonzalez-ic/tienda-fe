@@ -13,7 +13,7 @@ return response
   console.log(e)}
 }
 
-export async function getProducts () {
+export async function getProducts (serch) {
   try {
     const response = await Axios({
       method: 'GET',

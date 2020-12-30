@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom'
 import { Card, Media, Heading, Image, Columns, Button} from 'react-bulma-components'
+
 import IconLogo  from "../images/logoP.png";
 
 const Product=  ( products )=>{
   
     return (
-      <Columns style={{ margin: '15% 0 5% 10% '}}>
+      <Columns style={{ margin: '2% 0 5% 10% '}}>
       {products.product.map(
         ({ id, name, image_path, price, highligth }) => (
           <Columns.Column size={4} key={id}>
@@ -23,8 +25,8 @@ const Product=  ( products )=>{
               </Card.Content>
               <Card.Footer>
                   <Button.Group  position='centrer'>
-                    <Button color='primary'  >Comprar</Button>
-                    <Button color='primary' >Ver detalle</Button>
+                    <Button color='primary'>Comprar</Button>
+                    <Button color="primary"><Link to={"/productos/"+id}style={{color:'white' }}>Ver Detalle</Link></Button>
               </Button.Group>
               </Card.Footer>
             </Card>
