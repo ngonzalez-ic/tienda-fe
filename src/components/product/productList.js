@@ -19,7 +19,7 @@ const ProductList = ()=>{
  // setLoading(false)
     useEffect(()=>{
       loadProduct()
-    }, [serch])
+    }, [])
 
     const handleChange = (e)=>{
       setSerch(e.target.value)
@@ -40,7 +40,7 @@ const ProductList = ()=>{
           value={serch}/>
         </form>
           
-          <Product product={product} />
+          <Product product={product}/>
           </> 
       </>
             

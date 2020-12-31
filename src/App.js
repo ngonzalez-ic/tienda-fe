@@ -3,7 +3,9 @@ import {Switch,BrowserRouter as Router, Route}from 'react-router-dom'
 import Content from './components/content';
 import Login from './components/login';
 import Register from './components/register';
+import  Sale  from './components/sale/saleProduct';
 import GlobalState from './context/globalState';
+
 
 function App() {
   return (
@@ -15,8 +17,7 @@ function App() {
               </Route>
               <Route path='/register' exact component={Register} />
               <Route path='/login' exact component={Login} />
-              <Route path='/productos'>
-              </Route>
+              <Route path='/sale/:id' exact component={Sale} />
               <Route path='/contactos'>
               </Route>
               <Route path='/'>
