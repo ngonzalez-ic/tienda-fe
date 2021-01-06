@@ -6,42 +6,47 @@ import Loading from '../loading/Loading'
 const ProductList = ()=>{
   const [product, setProduct] = useState([])
   const [isLoading, setLoading] = useState(true)
-  const [serch,setSerch] = useState("");
+  const [search,setSearch] = useState("");
 
   async function loadProduct(){
-    const response = await getProducts(serch)
+    const response = await getProducts(search)
     if (response && response.status===201)
     setProduct(response.data.product)
     else{
       setLoading(true)
     }
   }
- // setLoading(false)
     useEffect(()=>{
       loadProduct()
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [search])
 
     const handleChange = (e)=>{
-      setSerch(e.target.value)
+      setSearch(e.target.value)
+      e.preventDefault()
   }
 
     return(
       
-      <> {!isLoading && <Loading />}
+      <> 
+      
+      {!isLoading && <Loading />}
       {!product.length && (
         <>
         <h1 className='title has-text-centered'>'Lista de productos vacia'</h1>
         <Loading />
         </>)}
-      {!isLoading && product.length && <></>}
-        <> <form onChange={handleChange}>
+      {isLoading && product.length && <> 
+        <form onChange={handleChange} style={{display:'flex', justifyContent:'center'}}>
           <input type="text" placeholder='Buscar'
-          name='serch'
-          value={serch}/>
+          name='search'
+          value={search}
+          style={{}}
+          />
         </form>
-          
-          <Product product={product}/>
-          </> 
+        <Product product={product}/>
+      </>}
+   
       </>
             
         

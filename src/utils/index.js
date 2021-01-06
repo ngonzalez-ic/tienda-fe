@@ -13,11 +13,11 @@ return response
   console.log(e)}
 }
 
-export async function getProducts (serch='') {
+export async function getProducts (search='') {
   try {
     const response = await Axios({
       method: 'GET',
-      url: 'http://localhost:3001/productos/?serch='+serch
+      url: 'http://localhost:3001/productos/?search='+search
     })
     return response
     
