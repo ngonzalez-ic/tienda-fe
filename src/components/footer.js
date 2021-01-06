@@ -1,16 +1,26 @@
 import React from 'react'
+import { Footer, Container, Content, Hero } from 'react-bulma-components'
 
-const Footer=()=>{
-    return(
-        <footer className="footer">
-			<div className="container">
-				<div className="row">
-					<div className="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 className="footer-heading">footer</h2>
-                        </div></div>
-        </div>
-    </footer>
-    )
+const FooterComponent = () => {
+  return (
+    <Hero size='fullheight'>
+      <Hero.Head renderAs='header' />
+      <Hero.Body />
+      <Hero.Footer>
+        <Footer>
+          <Container>
+            <Content style={{ textAlign: 'center' }}>
+              <p>
+                <strong>Bulma</strong> by <a href='http://jgthms.com'>Jeremy Thomas</a>. The source code is licensed
+                <a href='http://opensource.org/licenses/mit-license.php'>MIT</a>. The website content
+                is licensed <a href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>CC BY NC SA 4.0</a>.
+              </p>
+            </Content>
+          </Container>
+        </Footer>
+      </Hero.Footer>
+    </Hero>
+  )
 }
 
-export default Footer
+export default FooterComponent

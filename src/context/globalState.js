@@ -2,7 +2,7 @@ import React,{Component} from "react"
 import ContextApi from './contextApi'
 
 class GlobalState extends Component{
-    state={
+    state ={
         login:localStorage.getItem("login")
     }
     loginUser = token=>{
