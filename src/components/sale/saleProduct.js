@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getProductsbyID } from '../../utils'
 import Loading from '../loading/Loading'
-import { Card, Media, Image, Content, Heading, Columns, Box, Section, Level, Button } from 'react-bulma-components'
+import { Card, Media, Image, Content, Heading, Columns, Box, Section, Level, Button, Modal } from 'react-bulma-components'
 import SaleFormModal from './saleFormModal'
 const SaleProduct = (props) => {
   console.log(props.match.params.id)
@@ -68,7 +68,17 @@ const SaleProduct = (props) => {
          </Columns.Column>
 
         </Columns>}
-      
+        {modal === true &&<>
+      <Modal  show={modal}onClose={() => setModal(false)} >
+        <Modal.Card>
+        <Modal.Content>
+        <Section style={{ backgroundColor: 'white' }}>
+          <SaleFormModal />
+        </Section>
+      </Modal.Content>
+        </Modal.Card>
+      </Modal>
+        </>}
     </>
   )
 }
