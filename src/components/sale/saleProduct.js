@@ -73,7 +73,7 @@ const SaleProduct = (props) => {
         <Modal.Card>
         <Modal.Content>
         <Section style={{ backgroundColor: 'white' }}>
-          <SaleFormModal />
+          <SaleFormModal producto={producto} modal={modal} />
         </Section>
       </Modal.Content>
         </Modal.Card>
