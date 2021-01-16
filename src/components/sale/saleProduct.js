@@ -4,11 +4,10 @@ import Loading from '../loading/Loading'
 import { Card, Media, Image, Content, Heading, Columns, Box, Section, Level, Button, Modal } from 'react-bulma-components'
 import SaleFormModal from './saleFormModal'
 const SaleProduct = (props) => {
-  console.log(props.match.params.id)
   const key = props.match.params.id
   const [producto, setProduct] = useState([])
   const [isLoading, setLoading] = useState(false)
-  const [modal, setModal]= useState(false)
+  const [modal, setModal] = useState(false)
   useEffect(
     () => {
       async function fetchtData () {
@@ -19,9 +18,8 @@ const SaleProduct = (props) => {
       fetchtData()
     }, []
   )
-  const handleClick=() => {
+  const handleClick = () => {
     setModal(true)
-    console.log(modal);
   }
   return (
     <>
@@ -33,8 +31,8 @@ const SaleProduct = (props) => {
               <Card.Header.Title>{producto.name}</Card.Header.Title>
             </Card.Header>
             <Card.Content>
-              <Media style={{ display: 'flex', justifyContent: 'center',flexWrap:'wrap'}}>
-                <Card.Image size='4by3' style={{ width: 300, height: 400, display: 'flex', justifyContent: 'center'}} src={producto.image_path} />
+              <Media style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <Card.Image size='4by3' style={{ width: 300, height: 400, display: 'flex', justifyContent: 'center' }} src={producto.image_path} />
                 <Media.Item>
                   <Content style={{ display: 'flex', justifyContent: 'center', alineItem: 'center' }}>
                     {producto.description}
@@ -47,38 +45,39 @@ const SaleProduct = (props) => {
                 <Level.Side align='left'>
                   <Button link>Volver</Button>
                 </Level.Side>
-               </Level></Card.Footer.Item>
-              <Card.Footer.Item>            
-              <Level>
-                <Level.Side align='left'>
-                  <Button onClick={handleClick}>comprar</Button>
-                </Level.Side>
-               </Level>
+              </Level>
               </Card.Footer.Item>
-              <Card.Footer.Item>            
-              <Level>
-                <Level.Side align='left'>
-                  <h3>Stock: <strong>{producto.stock}</strong></h3>
+              <Card.Footer.Item>
+                <Level>
+                  <Level.Side align='left'>
+                    <Button onClick={handleClick}>comprar</Button>
+                  </Level.Side>
+                </Level>
+              </Card.Footer.Item>
+              <Card.Footer.Item>
+                <Level>
+                  <Level.Side align='left'>
+                    <h3>Stock: <strong>{producto.stock}</strong></h3>
 
-                </Level.Side>
-               </Level>
+                  </Level.Side>
+                </Level>
               </Card.Footer.Item>
             </Card.Footer>
-           </Card>
-         </Columns.Column>
+          </Card>
+        </Columns.Column>
 
-        </Columns>}
-        {modal === true &&<>
-      <Modal  show={modal}onClose={() => setModal(false)} >
-        <Modal.Card>
-        <Modal.Content>
-        <Section style={{ backgroundColor: 'white' }}>
-          <SaleFormModal producto={producto} modal={modal} />
-        </Section>
-      </Modal.Content>
-        </Modal.Card>
-      </Modal>
-        </>}
+      </Columns>}
+      {modal === true && <>
+        <Modal show={modal} onClose={() => setModal(false)}>
+          <Modal.Card>
+            <Modal.Content>
+              <Section style={{ backgroundColor: 'white' }}>
+                <SaleFormModal producto={producto} modal={modal} />
+              </Section>
+            </Modal.Content>
+          </Modal.Card>
+        </Modal>
+                         </>}
     </>
   )
 }

@@ -10,7 +10,7 @@ const Product = (products) => {
         ({ id, name, image_path, price, highligth }) => (
           <Columns.Column size={4} key={id}>
             <Card style={{ margin: '0px auto', width: 300 }}>
-              <Card.Image size='4by3' style={{ width: 200, height: 200, display: 'flex', justifyContent: 'center', marginLeft:'auto', marginRight:'auto' }} src={image_path} />
+              <Card.Image size='4by3' style={{ width: 200, height: 200, display: 'flex', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto' }} src={image_path} />
               <Card.Content>
                 <Media>
                   <Media.Item renderAs='figure' position='left'>
