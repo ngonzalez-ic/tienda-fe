@@ -6,6 +6,10 @@ const SaleFormModal = (props) => {
   const [formValue, setFormValue] = useState({ email: '', password: '' })
   const [pay, setPay] = useState('Efectivo')
 
+  const userWeb= localStorage.getItem('login')
+  const x =JSON.parse(userWeb)
+  console.log(x.user)
+
   const handelChange = event => {
     const { name, value } = event.target
     setFormValue({ ...formValue, [name]: value })
@@ -18,6 +22,7 @@ const SaleFormModal = (props) => {
     console.log(value)
     setPay(value)
   }
+  console.log();
 
   return (
     <>

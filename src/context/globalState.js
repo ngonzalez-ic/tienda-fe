@@ -5,12 +5,15 @@ class GlobalState extends Component{
     state ={
         login:localStorage.getItem("login")
     }
-    loginUser = token=>{
+    loginUser = (token,user)=>{
         this.setState({
             login:true
         })
-        localStorage.setItem("login",true);
-        localStorage.setItem("token",token)
+        const userWebLogin={'token':token,'user':user}
+        localStorage.setItem("login",JSON.stringify(userWebLogin))
+        /* localStorage.setItem("login",true);
+        localStorage.setItem("token",token);
+        localStorage.setItem('user',user) */
     }
     logoutUser = ()=>{
         this.setState({

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { getProductsbyID } from '../../utils'
 import Loading from '../loading/Loading'
 import { Card, Media, Image, Content, Heading, Columns, Box, Section, Level, Button, Modal } from 'react-bulma-components'
@@ -8,6 +9,7 @@ const SaleProduct = (props) => {
   const [producto, setProduct] = useState([])
   const [isLoading, setLoading] = useState(false)
   const [modal, setModal] = useState(false)
+  const history = useHistory()
   useEffect(
     () => {
       async function fetchtData () {
@@ -20,6 +22,9 @@ const SaleProduct = (props) => {
   )
   const handleClick = () => {
     setModal(true)
+  }
+  const handleClickBack = () =>{
+    history.push('/')
   }
   return (
     <>
@@ -41,9 +46,10 @@ const SaleProduct = (props) => {
               </Media>
             </Card.Content>
             <Card.Footer>
-              <Card.Footer.Item renderAs='a' href='/'><Level>
+              <Card.Footer.Item >
+                <Level>
                 <Level.Side align='left'>
-                  <Button link>Volver</Button>
+                  <Button onClick={handleClickBack}>Volver</Button>
                 </Level.Side>
               </Level>
               </Card.Footer.Item>

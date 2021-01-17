@@ -20,8 +20,8 @@ const Login = () => {
     loginUserWeb(formValue)
       .then(data => {
         if (data.data.token) {
-          context.loginUser(data.data.token)
-          console.log('Bienvenido/a')
+          context.loginUser(data.data.token,formValue.email)
+          console.log('Bienvenido/a',formValue.email)
           history.push('/')
         } else {
           alert('Ha ocurrido un error')
