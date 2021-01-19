@@ -47,3 +47,16 @@ export async function loginUserWeb (data) {
     console.log(e)
   }
 }
+export async function createSale(data) {
+  console.log('asfdsafsdfdsafas',data)
+  try {
+    const response = await Axios({
+      method: 'POST',
+      url: 'http://localhost:3001/sales/sales',
+      data: data
+    })
+    return response
+  } catch (e) {
+    console.log(e)
+  }
+}

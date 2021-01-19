@@ -1,34 +1,32 @@
 import React, { useState } from 'react'
+import { createSale } from "../../utils/index";
 import { Form as BulmaForms, Button, Heading } from 'react-bulma-components'
 const { Field, Control, Label, Input, Select } = BulmaForms
 
+
 const SaleFormModal = (props) => {
-  const [formValue, setFormValue] = useState({ email: '', password: '' })
+  const [formValue, setFormValue] = useState({ userId: '', productID: '', price:'',unit:'',pyment:{metodh:'',status:''} })
   const [pay, setPay] = useState('Efectivo')
 
   const userWeb= localStorage.getItem('login')
-  const x =JSON.parse(userWeb)
-  console.log(x.user)
+  const userId =JSON.parse(userWeb)
 
-  const handelChange = event => {
-    const { name, value } = event.target
-    setFormValue({ ...formValue, [name]: value })
-  }
   const handleSubmit = (e) => {
     e.preventDefault()
+    setFormValue({ ...formValue,userId:userId.user,productID:props.producto.id,pice:props.producto.price,unit:1,pyment:{metodh:pay, status:'pendiente'} })
+    createSale(formValue)
   }
   const handlOnChange = (e) => {
     const { value } = e.target
-    console.log(value)
     setPay(value)
   }
   console.log();
 
   return (
     <>
-      <form onSubmit={handleSubmit} style={{ margin: 'auto ', width: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', flexWrap: 'nowrap' }}>
+      <form onClick={handleSubmit} style={{ margin: 'auto ', width: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', flexWrap: 'nowrap' }}>
         <Heading size={2}>
-          Formulario de pago
+          Formulario de compra
         </Heading>
 
         <Field>
@@ -51,7 +49,8 @@ const SaleFormModal = (props) => {
             </Select>
           </Control>
         </Field>
-        <Button.Group>
+
+        <Button.Group style={{marginTop:20}}>
           <Button type='submit' color='primary'>
             Confirmar compra
           </Button>
