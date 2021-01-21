@@ -8,7 +8,6 @@ const Register = () => {
 
   const handelChange = e => {
     const { name, value } = e.target
-    console.log(name, value)
     setRegister({ ...register, [name]: value })
   }
 
