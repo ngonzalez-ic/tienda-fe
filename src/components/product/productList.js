@@ -18,6 +18,7 @@ const ProductList = () => {
   }
   useEffect(() => {
     loadProduct()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
 
   const handleChange = (e) => {
@@ -49,7 +50,7 @@ const ProductList = () => {
           <h1 className='title has-text-centered'>'Lista de productos vacia'</h1>
           <Loading />
         </>)}
-      {isLoading && product.length && <Product product={product} />}
+      {isLoading && product.length && <Product product={product} style={{ backgroundColor: 'red' }} />}
 
     </>
 

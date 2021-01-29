@@ -47,7 +47,7 @@ export async function loginUserWeb (data) {
     console.log(e)
   }
 }
-export async function createSale(data) {
+export async function createSale (data) {
   try {
     const response = await Axios({
       method: 'POST',

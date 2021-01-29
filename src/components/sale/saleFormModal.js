@@ -1,27 +1,63 @@
 import React, { useState } from 'react'
-import { createSale } from "../../utils/index";
+import { createSale } from '../../utils/index'
 import { Form as BulmaForms, Button, Heading } from 'react-bulma-components'
-const { Field, Control, Label, Select } = BulmaForms
-
+const { Field, Control, Label, Select, Input } = BulmaForms
 
 const SaleFormModal = (props) => {
-  const [formValue, setFormValue] = useState({})
+  const [formValue, setFormValue] = useState({ })
   const [pay, setPay] = useState('Efectivo')
+  const [creditCard, setCreditCard] = useState({})
+  const [count, setCount] = useState(1)
+  const [desableButton, setdeseableButton] = useState(true)
 
-  const userWeb= localStorage.getItem('login')
-  const userId =JSON.parse(userWeb)
+  const userWeb = localStorage.getItem('login')
+  const userId = JSON.parse(userWeb)
 
   const handleSubmit = (e) => {
-    setFormValue({ ...formValue,userId:userId.user,
+
+    e.preventDefault()
+    setFormValue({ ...formValue,
+      userId:userId.user,
       productID:props.producto.id,
-      price:props.producto.price,
-      unit:1,
-      payment:{method:pay, status:'pendiente'} })
+      pice:props.producto.price,
+      unit:count,
+      payment:{
+        method:pay,
+        status:'pendiente'
+      } 
+    })
+
     createSale(formValue)
   }
   const handlOnChange = (e) => {
     const { value } = e.target
+
     setPay(value)
+  }
+  const creditCardName = (e) => {
+    const { name, value } = e.target
+    setCreditCard(name, value)
+   // console.log({ name: value })
+  }
+  const botonDeseable = (unit) => {
+    if (unit <= 1) {
+      setdeseableButton(true)
+    } else {
+      setdeseableButton(false)
+    }
+  }
+  const handleClick = (e) => {
+    e.preventDefault()
+    const unit = count - 1
+    setCount(unit)
+    botonDeseable(unit)
+  }
+
+  const handleClickPlus = (e) => {
+    e.preventDefault()
+    const unit = count + 1
+    setCount(unit)
+    botonDeseable(unit)
   }
   return (
     <>
@@ -42,6 +78,13 @@ const SaleFormModal = (props) => {
           </Heading>
         </Field>
         <Field>
+          <Label>Cantidad {count}</Label>
+          <Button onClick={handleClick} disabled={desableButton}>-</Button>
+
+          <Button onClick={handleClickPlus}>+</Button>
+
+        </Field>
+        <Field>
           <Label>Metodo de pago</Label>
           <Control>
             <Select onChange={handlOnChange} value={pay}>
@@ -51,8 +94,14 @@ const SaleFormModal = (props) => {
           </Control>
         </Field>
 
-        <Button.Group style={{marginTop:20}}>
-          <Button type='submit' color='primary'  onClick={handleSubmit}>
+       {/*  {pay === 'Tarjeta' && <>
+          <Input onChange={creditCardName} value={creditCard.number} name='number' />
+          <Input onChange={creditCardName} value={creditCard} name='name' />
+          <Input onChange={creditCardName} value={creditCard} name='key' />
+              </>} */}
+
+        <Button.Group style={{ marginTop: 20 }}>
+          <Button type='submit' color='primary' onClick={handleSubmit}>
             Confirmar compra
           </Button>
           <Button color='danger'>
