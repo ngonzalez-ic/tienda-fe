@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { getProductsbyID } from '../../utils'
 import Loading from '../loading/Loading'
-import { Card, Media, Image, Content, Heading, Columns, Box, Section, Level, Button, Modal } from 'react-bulma-components'
+import { Card, Media, Content, Columns, Section, Level, Button, Modal } from 'react-bulma-components'
 import SaleFormModal from './saleFormModal'
+
 const SaleProduct = (props) => {
   const key = props.match.params.id
   const [producto, setProduct] = useState([])
@@ -18,12 +19,12 @@ const SaleProduct = (props) => {
         setLoading(false)
       }
       fetchtData()
-    }, []
+    }, [key]
   )
   const handleClick = () => {
     setModal(true)
   }
-  const handleClickBack = () =>{
+  const handleClickBack = () => {
     history.push('/')
   }
   return (
@@ -46,12 +47,12 @@ const SaleProduct = (props) => {
               </Media>
             </Card.Content>
             <Card.Footer>
-              <Card.Footer.Item >
+              <Card.Footer.Item>
                 <Level>
-                <Level.Side align='left'>
-                  <Button onClick={handleClickBack}>Volver</Button>
-                </Level.Side>
-              </Level>
+                  <Level.Side align='left'>
+                    <Button onClick={handleClickBack}>Volver</Button>
+                  </Level.Side>
+                </Level>
               </Card.Footer.Item>
               <Card.Footer.Item>
                 <Level>
@@ -83,7 +84,7 @@ const SaleProduct = (props) => {
             </Modal.Content>
           </Modal.Card>
         </Modal>
-                         </>}
+      </>}
     </>
   )
 }
