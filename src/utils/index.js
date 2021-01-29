@@ -48,7 +48,7 @@ export async function loginUserWeb (data) {
   }
 }
 export async function createSale (data) {
-  try {
+ try {
     const response = await Axios({
       method: 'POST',
       url: 'http://localhost:3001/sales/sales',
