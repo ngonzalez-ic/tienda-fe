@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form as BulmaForms, Button } from 'react-bulma-components'
+import { Form as BulmaForms, Button,Section,Box,Image } from 'react-bulma-components'
 import { loginUserWeb } from '../utils/index'
-import Loading from '../components/loading/Loading'
 import ContextApi from '../context/contextApi'
+import LogoLogin from '../components/images/login.png'
+
 const { Field, Control, Label, Input } = BulmaForms
 
 const Login = () => {
   const context = useContext(ContextApi)
   const [formValue, setFormValue] = useState({ email: '', password: '' })
-  const [isLoading, setLoading] = useState(false)
   const history = useHistory()
   const handelChange = event => {
     const { name, value } = event.target
@@ -21,25 +21,24 @@ const Login = () => {
       .then(data => {
         if (data.data.token) {
           context.loginUser(data.data.token, formValue.email)
-          console.log('Bienvenido/a', formValue.email)
+          alert('Bienvenido/a', formValue.email)
           history.push('/')
         } else {
-          alert('Ha ocurrido un error')
+          alert('Verifica los datos ingresados')
         }
-        setLoading(true)
       },
       error => {
         console.log('error', error)
-        setLoading(false)
       })
       .catch(ex => console.error(ex))
   }
 
   return (
-    <>
-      {isLoading
-        ? <Loading />
-        : <form onSubmit={handleSubmit} style={{ margin: '10% auto ', width: 450 }}>
+    <Section style={{ margin: '10% auto ', width: 500 }}>
+        <Image  size={64} alt='64x64' src={LogoLogin} style={{display: 'flex', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto'}}/>
+        <Box>
+    
+     <form onSubmit={handleSubmit} >
           <Field>
             <Label>Correo</Label>
             <Control>
@@ -66,8 +65,12 @@ const Login = () => {
           <Button type='submit' color='primary'>
             Iniciar
           </Button>
-        </form>}
-    </>
+        </form>
+    </Box>
+    <p>
+      En caso de NO registrado haga click  <strong> <a href='http://localhost:3000/register'>Aqui</a> </strong>. Para registrarse
+    </p>
+    </Section>
 
   )
 }
