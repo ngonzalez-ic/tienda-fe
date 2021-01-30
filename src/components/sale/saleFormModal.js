@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { createSale } from '../../utils/index'
 import { Form as BulmaForms, Button, Heading } from 'react-bulma-components'
 const { Field, Control, Label, Select, Input } = BulmaForms
 
-const SaleFormModal = (props) => {
+const SaleFormModal = (props,modal) => {
+  const history = useHistory()
   const [formValue, setFormValue] = useState({})
   const [desableButton, setDeseableButton] = useState(true)
   const [count, setCount] = useState(1)
@@ -130,12 +132,14 @@ const SaleFormModal = (props) => {
           <Button type='submit' color='primary'>
             Confirmar compra
           </Button>
-          <Button color='danger'>
-            Cancelar
-          </Button>
+          
         </Button.Group>
+        
 
       </form>
+      <Button onClick={()=>{ history.push('/')}} color='danger' style={{ margin: 'auto ', width: 'auto' }}>
+            Cancelar
+          </Button>
     </>
 
   )
