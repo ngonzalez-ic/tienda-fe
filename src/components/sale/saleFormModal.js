@@ -92,23 +92,34 @@ const SaleFormModal = (props) => {
           placeholder='Tal cual figura en su tarjeta'
           name='ownerCard'
           value={formValue.ownerCard}
-          onChange={handelChange}/>
+          onChange={handelChange}
+          pattern="[a-z,A-Z,- -]{2,48}" 
+          required
+          />
           </Field>
           <Field>
             <Label>Numero</Label>
           <Input
+            pattern="[0-1-2-3-4-5-6-7-8-9]{16}"
             placeholder='Numero de su tarjeta'
-              name='numberCard'
+            name='numberCard'
             value={formValue.numberCard}
-            onChange={handelChange}/>
+            onChange={handelChange}
+            minlength='16'
+            maxlength='16'
+            required/>
           </Field>
           <Field>
             <Label>Clave de seguridad</Label>
           <Input
+            pattern="[0-1-2-3-4-5-6-7-8-9]{3,4}"
             placeholder='Clave de su tarjeta'
-              name='securityNumbreCard'
+            name='securityNumbreCard'
             value={formValue.securityNumbreCard}
-            onChange={handelChange}/>
+            onChange={handelChange}
+            minlength='3'
+            maxlength='4'
+            required/>
           </Field>
          </>
         :
