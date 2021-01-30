@@ -64,7 +64,7 @@ const Login = () => {
             </Control>
           </Field>
           <Button type='submit' color='primary'>
-            Guardar
+            Iniciar
           </Button>
         </form>}
     </>
