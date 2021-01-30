@@ -1,5 +1,9 @@
 import React from 'react'
 import {Tile,Section,Box,Heading,Image} from 'react-bulma-components'
+import Adoption from '../components/images/adopta.jpg'
+import ImageProducts from '../components/images/host.jpg'
+import Contact from '../components/images/charla.png'
+import Paw from '../components/images/paw.png'
 const About =()=>{
     return(
         <Section>
@@ -9,25 +13,30 @@ const About =()=>{
               <Tile>
                 <Tile kind="parent" vertical>
                   <Tile renderAs="article" kind="child" notification color="primary" >
-                    <Heading>Vertical...</Heading>
-                    <Heading subtitle>Top tile</Heading>
+                    <Heading>PETS-STORE...</Heading>
+                    <Heading subtitle>PEST-LOVE</Heading>
+                    <Image  size={128} alt='128x128' src={Paw} style={{marginLeft:200}}/>
                   </Tile>
-                  <Tile renderAs="article" kind="child" notification color="warning">
-                    <Heading>Tiles...</Heading>
-                    <Heading subtitle>Bottom Tile...</Heading>
+                  <Tile renderAs="article" kind="child" notification color="warning" style={{ display: 'flex', flexDirection:'column', justifyContent: 'center' }}>
+                    <Heading>Telefonos de contacto</Heading>
+                    <Heading subtitle>(011-154396786)</Heading>
+                    <Heading subtitle>(011-1543967867)</Heading>
+                    
+                    <Image  size={64} alt='64x64' src={Contact} style={{marginLeft:200}}/>
                   </Tile>
+                  
                 </Tile>
                 <Tile kind="parent">
                   <Tile renderAs="article" kind="child" notification color="info">
-                    <Heading>Middle Tile...</Heading>
-                    <Heading subtitle>With image Tile...</Heading>
-                    <Image size="4by3" src="http://bulma.io/images/placeholders/640x480.png" />
+                    <Heading>Nuevo sitio WEB...</Heading>
+                    <Heading subtitle>Ingresa y accede a los mejores productos para tu mascota</Heading>
+                    <Image size="4by3" src={ImageProducts} />
                   </Tile>
                 </Tile>
               </Tile>
               <Tile kind="parent">
                 <Tile renderAs="article" kind="child" notification color="danger">
-                  <Heading>Wide tile</Heading>
+                  <Heading>Seguinos en nuestas redes</Heading>
                   <Heading subtitle>Aligned with the right tile</Heading>
                   <div className="content" />
                 </Tile>
@@ -36,9 +45,10 @@ const About =()=>{
             <Tile kind="parent">
               <Tile renderAs="article" kind="child" notification color="success">
                 <div className="content">
-                  <Heading>Tall tile</Heading>
-                  <Heading subtitle>With even more content</Heading>
+                  <Heading>Campañas de adopción</Heading>
+                  <Heading subtitle>& hogares de transito</Heading>
                   <div className="content" />
+                  <Image size="4by3" src={Adoption} />
                 </div>
               </Tile>
             </Tile>
