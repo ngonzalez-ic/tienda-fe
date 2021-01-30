@@ -3,9 +3,8 @@ import { Footer, Container, Content, Hero } from 'react-bulma-components'
 
 const FooterComponent = () => {
   return (
-    <Hero size='fullheight'>
-      <Hero.Head renderAs='header' />
-      <Hero.Body />
+    <Hero >
+      <Hero.Head renderAs='footer' />
       <Hero.Footer>
         <Footer>
           <Container>
