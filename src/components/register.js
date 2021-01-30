@@ -32,6 +32,7 @@ const Register = () => {
         <Label>Correo</Label>
         <Control>
           <Input
+            type='email'
             placeholder='Correo'
             name='email'
             value={register.email}
