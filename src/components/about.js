@@ -37,7 +37,8 @@ const About =()=>{
               <Tile kind="parent">
                 <Tile renderAs="article" kind="child" notification color="danger">
                   <Heading>Seguinos en nuestas redes</Heading>
-                  <Heading subtitle>Aligned with the right tile</Heading>
+                  <Heading subtitle>Instagram:  @PetsLoveTienda_OK</Heading>
+                  <Heading subtitle>Facebook: Tienda Pest Love</Heading>
                   <div className="content" />
                 </Tile>
               </Tile>
