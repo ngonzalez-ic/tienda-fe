@@ -14,13 +14,12 @@ const SaleFormModal = (props) => {
   const handelChange = event => {
     const { name, value } = event.target
     console.log(name,value);
-    setFormValue({ ...formValue,
+    setFormValue({ ...formValue,[name]: value,
       userId:userId.user,
       productID:props.producto.id,
       price:props.producto.price,
       unit:count,
-      status:'pendiene',
-      method:value
+      status:'pendiene'
     })
   }
   const handleClick = (e) => {
@@ -46,7 +45,7 @@ const SaleFormModal = (props) => {
   }
 
   const handleSubmit = (e)=>{
-    console.log(formValue);
+    alert('gracias por tu compra')
     createSale(formValue);
 
   }
@@ -78,14 +77,44 @@ const SaleFormModal = (props) => {
          <Field>
           <Label>Metodo de pago</Label>
           <Control>
-            <Select onChange={handelChange} name='pay' value={formValue.pay}>
+            <Select onChange={handelChange} name='method' value={formValue.method}>
             <option value=''></option>
               <option value='efectivo'>Efectivo</option>
               <option value='tarjeta'>Tarjeta</option>
             </Select>
           </Control>
         </Field>
-       
+        {formValue.method === 'tarjeta'?
+         <>
+         <Field > 
+           <Label>Nombre del titular</Label>
+          <Input 
+          placeholder='Tal cual figura en su tarjeta'
+          name='ownerCard'
+          value={formValue.ownerCard}
+          onChange={handelChange}/>
+          </Field>
+          <Field>
+            <Label>Numero</Label>
+          <Input
+            placeholder='Numero de su tarjeta'
+              name='numberCard'
+            value={formValue.numberCard}
+            onChange={handelChange}/>
+          </Field>
+          <Field>
+            <Label>Clave de seguridad</Label>
+          <Input
+            placeholder='Clave de su tarjeta'
+              name='securityNumbreCard'
+            value={formValue.securityNumbreCard}
+            onChange={handelChange}/>
+          </Field>
+         </>
+        :
+        'Podras abonarlo en el local al retirar mencionando tu correo'}
+      
+
         <Button.Group style={{ marginTop: 20 }}>
           <Button type='submit' color='primary'>
             Confirmar compra
