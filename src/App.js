@@ -12,11 +12,9 @@ function App () {
       <GlobalState>
         <Router>
           <Switch>
-            <Route path='/Nosotros' />
             <Route path='/register' exact component={Register} />
             <Route path='/login' exact component={Login} />
             <Route path='/sale/:id' exact component={Sale} />
-            <Route path='/contactos' />
             <Route path='/'>
               <Content />
             </Route>
